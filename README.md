@@ -1,3 +1,6 @@
+[![Build Status](https://drone.io/github.com/AtoCrafter/InfiniteWater/status.png)](https://drone.io/github.com/AtoCrafter/InfiniteWater/latest)
+
+
 # Infinite Water
 
 Minecraft MOD
