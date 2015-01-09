@@ -13,6 +13,8 @@ class ItemInfiniteWaterBucket extends Item {
   setTextureName("bucket_water")
   setUnlocalizedName("InfiniteWaterBucket")
 
+  override def hasEffect(par1ItemStack: ItemStack, pass: Int): Boolean = true
+
   override def onItemUse(itemstack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, fx: Float, fy: Float, yz: Float): Boolean = {
     val dir = ForgeDirection.getOrientation(side)
     val (tx, ty, tz) = (x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ)
