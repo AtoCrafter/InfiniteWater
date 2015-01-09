@@ -9,7 +9,7 @@ import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.World
 import net.minecraftforge.fluids.{FluidContainerRegistry, FluidRegistry, FluidStack}
 
-class BlockInfiniteWaterServer extends BlockContainer(Material.iron) {
+class BlockInfiniteWaterServer extends BlockContainer(Material.glass) {
 
   setBlockName("InfiniteWaterServer")
   setCreativeTab(CreativeTabs.tabBlock)
