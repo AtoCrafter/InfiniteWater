@@ -13,21 +13,26 @@ class BlockInfiniteWaterServer extends BlockContainer(Material.iron) {
 
   setBlockName("InfiniteWaterServer")
   setCreativeTab(CreativeTabs.tabBlock)
+  setBlockTextureName("water_still")
 
   override def onBlockActivated(world: World, x: Int, y: Int, z: Int, player: EntityPlayer, meta: Int, fx: Float, fy: Float, fz: Float): Boolean = {
     val itemstack = player.getCurrentEquippedItem
-    val fluid = FluidContainerRegistry.getFluidForFilledItem(itemstack)
-    if (itemstack != null && fluid == null) {
-      val filled = FluidContainerRegistry.fillFluidContainer(new FluidStack(FluidRegistry.WATER, 1000), itemstack)
-      itemstack.stackSize -= 1
-      if (itemstack.stackSize <= 0) {
-        player.inventory.setInventorySlotContents(player.inventory.currentItem, null)
-      }
-      if (!player.inventory.addItemStackToInventory(filled.copy)) {
-        player.entityDropItem(filled.copy, 1)
+    if (FluidContainerRegistry.isContainer(itemstack)) {
+      val fluid = FluidContainerRegistry.getFluidForFilledItem(itemstack)
+      if (fluid == null || fluid.getFluid == FluidRegistry.WATER) {
+        val filled = FluidContainerRegistry.fillFluidContainer(new FluidStack(FluidRegistry.WATER, 1000), itemstack)
+        itemstack.stackSize -= 1
+        if (itemstack.stackSize <= 0) {
+          player.inventory.setInventorySlotContents(player.inventory.currentItem, null)
+        }
+        if (!player.inventory.addItemStackToInventory(filled.copy)) {
+          player.entityDropItem(filled.copy, 1)
+        }
+        player.inventory.markDirty()
+        return true
       }
     }
-    true
+    false
   }
 
   override def createNewTileEntity(world: World, meta: Int): TileEntity =

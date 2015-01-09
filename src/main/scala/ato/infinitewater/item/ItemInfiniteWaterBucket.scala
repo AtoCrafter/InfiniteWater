@@ -10,7 +10,7 @@ import net.minecraftforge.common.util.ForgeDirection
 class ItemInfiniteWaterBucket extends Item {
 
   setCreativeTab(CreativeTabs.tabMaterials)
-  setTextureName("bucketWater")
+  setTextureName("bucket_water")
   setUnlocalizedName("InfiniteWaterBucket")
 
   override def onItemUse(itemstack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, fx: Float, fy: Float, yz: Float): Boolean = {
